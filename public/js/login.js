@@ -24,7 +24,7 @@ btn.addEventListener('click', function() {
     }).then(res =>{
         if (res.ok) {
             
-           location.href = '/storeContent'
+           location.href = '/store'
         }
 
     })

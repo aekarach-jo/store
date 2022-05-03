@@ -24,7 +24,7 @@ class StoreController extends Controller
         ]);
         // return response(['data' => $store]);
     }
-    public function EditStore()
+    public function StoreData()
     {
         $store = Store::all();
         return response([
@@ -41,10 +41,24 @@ class StoreController extends Controller
             'address' => 'required',
             'tel' => 'required'
         ]);
-        $store = Store::updated([
+        $store = Store::where('id', $request->id)->update([
             'storeName' => $request->storeName,
             'address' => $request->address,
             'tel' => $request->tel
+        ]);
+    }
+
+    public function DestroyStore($id)
+    {
+        Store::where('id', $id)->delete();
+    }
+
+    public function StoreIdData($id)
+    {
+        $store = Store::where('id', $id)->get()->first();
+        return view(
+            'products.product',[
+            'Store' => $store
         ]);
     }
 }

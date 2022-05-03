@@ -34,8 +34,10 @@
                 <td>{{$content->tel}}</td>
                 <td>
                     <div type="button">
-                        <img src="https://img.icons8.com/external-yogi-aprelliyanto-basic-outline-yogi-aprelliyanto/40/external-product-marketing-and-seo-yogi-aprelliyanto-basic-outline-yogi-aprelliyanto.png" >
-                    </dic>
+                        <a type="button" class="btn_get_product_id" id="{{$content->id}}" href="/getStoreById/{{$content->id}}">
+                            <img  src="https://img.icons8.com/external-yogi-aprelliyanto-basic-outline-yogi-aprelliyanto/40/external-product-marketing-and-seo-yogi-aprelliyanto-basic-outline-yogi-aprelliyanto.png">
+                        </a>
+                    </div>
                 </td>
                 <td>
                     <div class="row">
@@ -94,7 +96,7 @@
 
 <!-- Edit Store -->
 
-<div class="modal fade" id="modal-edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+<div class="modal fade" id="modal-edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -104,6 +106,10 @@
             <div class="modal-body">
                 <form>
                     <div class="col p-3">
+                        <div class="row" hidden>
+                            <label for="id">id</label>
+                            <input type="text" class="form-control" id="id">
+                        </div>
                         <div class="row">
                             <label for="storeName">ชื่อร้านค้า</label>
                             <input type="text" class="form-control" id="storeName">

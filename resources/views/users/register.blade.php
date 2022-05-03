@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             <label for="email" class="label-style">email</label>
-            <input type="email" id="email" class="input-style">
+            <input type="text" id="email" class="input-style">
         </div>
         <div class="row">
             <label for="password" class="label-style">password</label>
