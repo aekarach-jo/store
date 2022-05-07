@@ -33,7 +33,7 @@ class UserController extends Controller
 
 
 
-    public function onLogout()
+    public function logout()
     {
         Auth::logout();
         return response()->json([

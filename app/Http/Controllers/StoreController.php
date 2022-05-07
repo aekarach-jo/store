@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
+    public function ShowStore()
+    {
+        $store = Store::all();
+        return view('stores.store', [
+            'viewContent' => $store
+        ]);
+        // return response(['data' => $store]);
+    }
+
     public function onCreateStore(Request $request)
     {
         $store = Store::insert([
@@ -16,14 +25,6 @@ class StoreController extends Controller
         ]);
     }
 
-    public function ShowStore()
-    {
-        $store = Store::all();
-        return view('stores.store', [
-            'viewContent' => $store
-        ]);
-        // return response(['data' => $store]);
-    }
     public function StoreData()
     {
         $store = Store::all();
@@ -53,12 +54,14 @@ class StoreController extends Controller
         Store::where('id', $id)->delete();
     }
 
-    public function StoreIdData($id)
-    {
-        $store = Store::where('id', $id)->get()->first();
-        return view(
-            'products.product',[
-            'Store' => $store
-        ]);
-    }
+    // public function StoreIdData($id)
+    // {
+    //     $store = Store::where('id', $id)->get()->first();
+    //     return view(
+    //         'products.product',
+    //         [
+    //             'Store' => $store
+    //         ]
+    //     );
+    // }
 }

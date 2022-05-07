@@ -1,15 +1,31 @@
 var btn = document.querySelector('#btn-logout')
 btn.addEventListener('click', function () {
-    const url = '/logout'
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "X-CSRF-Token": document.querySelector('[name="csrf-token"]').content
+    Swal.fire({
+        position: 'center',
+        text: "ยืนยันการออกจากระบบหรือไม่?",
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#2aad19',
+        confirmButtonText: 'ยืนยัน'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const url = '/logout'
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "X-CSRF-Token": document.querySelector('[name="csrf-token"]').content
+                }
+            })
         }
+        window.location.reload();
     })
 })
+
+
+
 
 var btn_addStore = document.querySelector('#btn-add-store')
 btn_addStore.addEventListener('click', function () {
@@ -35,7 +51,17 @@ btn_addStore.addEventListener('click', function () {
             "X-CSRF-Token": document.querySelector('[name="csrf-token"]').content
         }
     }).then(res => {
-        window.location.reload()
+        if (res.ok) {
+            Swal.fire({
+                position: "center",
+                icon: 'success',
+                title: "สำเร็จ",
+                showConfirmButton: false,
+                timer: 700,
+            }).then((ress) => {
+                window.location.reload();
+            })
+        }
     })
 })
 
@@ -55,6 +81,7 @@ async function onEditStore(d) {
         await fetchStore();
     }
     var data = content.find(e => e.id == id)
+    console.log(data);
     var modal = document.querySelector('#modal-edit')
     modal.querySelector('#id').value = data.id
     modal.querySelector('#storeName').value = data.storeName
@@ -85,9 +112,18 @@ function onUpdateStore(storeData) {
         }
     }).then(res => {
         if (res.ok) {
-            window.location.reload();
+            Swal.fire({
+                position: "center",
+                icon: 'success',
+                title: "แก้ไขแล้ว",
+                showConfirmButton: false,
+                timer: 700,
+            }).then((ress) => {
+                window.location.reload();
+            })
         }
     })
+
 }
 
 async function onDeleteStore(d) {
@@ -97,17 +133,38 @@ async function onDeleteStore(d) {
         await fetchStore();
     }
 
-    const url = `/deleteStore/${id}`
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "X-CSRF-Token": document.querySelector('[name="csrf-token"]').content
-        }
-    }).then(res => {
-        if(res.ok){
-            window.location.reload();
+    Swal.fire({
+        position: 'center',
+        text: "ยืนยันการลบหรือไม่?",
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonColor: '#2aad19',
+        confirmButtonText: 'ยืนยัน'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            const url = `/deleteStore/${id}`
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "X-CSRF-Token": document.querySelector('[name="csrf-token"]').content
+                }
+            }).then(res => {
+                if (res.ok) {
+                    Swal.fire({
+                        position: "center",
+                        icon: 'success',
+                        title: "ลบแล้ว",
+                        showConfirmButton: false,
+                        timer: 700,
+                    }).then((ress) => {
+                        window.location.reload();
+                    })
+                }
+            })
         }
     })
 }
@@ -132,3 +189,7 @@ async function onDeleteStore(d) {
 //         }
 //     })
 // }
+
+
+
+//////////////////////////////// sweetAlet 2 Area /////////////////////////// 

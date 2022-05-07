@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <div class="container-fluid">
-      <h5 class="text-brand" href="/store">STORE</h5>
+      <a href="/store">
+        <h5 class="text-brand">STORE</h5>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -16,7 +18,7 @@
         <form class="d-flex">
           <input class="form-control me-4" type="search" placeholder="Search">
           <a class="btn btn-outline-info mr-2" href="/register">Register</a>
-          <button class="btn btn-danger" id="btn-logout">Logout</button>
+          <button type="button" class="btn btn-danger" id="btn-logout">Logout</button>
         </form>
       </div>
     </div>
