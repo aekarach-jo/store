@@ -96,20 +96,21 @@ async function onEditProduct(d) {
     modal.querySelector('#product_name').value = data.product_name
     modal.querySelector('#category').value = data.category
     modal.querySelector('#unit').value = data.unit
-    modal.querySelector('#image').value = data.image
+    modal.querySelector('.preview').src = data.image
 }
 
 
-var productData = [];
-function onUpdateProduct(productData) {
+function onUpdateProduct() {
     var modal = document.querySelector('#modal-edit')
-    productData = {
+    let productData = {
         'id': modal.querySelector('#id').value,
         'product_name': modal.querySelector('#product_name').value,
         'category': modal.querySelector('#category').value,
         'unit': modal.querySelector('#unit').value,
-        'image': modal.querySelector('#image').value,
+        'image': modal.querySelector('#image').files,
+        
     }
+    console.log(productData.image);
 
     let formData = new FormData()
     formData.append('id', productData.id)
@@ -137,7 +138,7 @@ function onUpdateProduct(productData) {
                 showConfirmButton: false,
                 timer: 700,
             }).then((ress) => {
-                // window.location.reload();
+                window.location.reload();
             })
         }
     })
@@ -185,7 +186,18 @@ async function onDeleteProduct(d) {
     })
 }
 
-function test() {
-    console.log('ok');
+function onChangeImage(e) {
+    let file = e.files;
+    if(file.length > 0){
+        // document.querySelector('#modal-edit .modal-body #image').innerHTML = `
+        // <input onchange="onChangeImage(this)" type="file" class="form-control" id="image">
+        // <img class="preview" src="">
+        // `;
+        let input = document.querySelector('#modal-edit .modal-body #image')
+        input.files = e.files
 
+        let preview = document.querySelector('#modal-edit .modal-body .preview')
+        preview.src = URL.createObjectURL(file[0])
+        console.log(preview.src);
+    }
 }

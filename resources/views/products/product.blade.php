@@ -142,8 +142,8 @@
                             </div>
                             <div class="row">
                                 <label for="image">รูป</label>
-                                <input type="file" class="form-control" id="image">
-                                {{-- <img src="{{ $product->image }}" alt=""> --}}
+                                <input onchange="onChangeImage(this)" type="file" class="form-control" id="image">
+                                <img class="preview" src="">
                             </div>
                         </div>
                     </form>

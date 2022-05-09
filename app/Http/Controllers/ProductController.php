@@ -45,27 +45,30 @@ class ProductController extends Controller
             'store_id' => $request->store_id
         ]);
     }
+    public function DestroyProduct($id){
+        Product::where('id', $id)->delete();
+    }
 
     public function UpdateProduct(Request $request)
     {
         
-        $request->validate([
-            'product_name' => 'required',
-            'category' => 'required',
-            'unit' => 'required',
-        ]);
-
+        // $request->validate([
+        //     'product_name' => 'required',
+        //     'category' => 'required',
+        //     'unit' => 'required',
+        // ]);
+        // dd($request->image[0]);
+        $image = $this->uploadImage($request->image[0]);
+        // dd($image);
         $product = Product::where('id', $request->id)->update([
             'product_name' => $request->product_name,
             'category' => $request->category,
             'unit' => $request->unit,
-            'image' => ($request->image == null) ? "" : $request->image,
+            'image' =>  $image
+            // 'image' => ($request->image == null) ? "" : $request->image,
         ]);
     }
 
-    public function DestroyProduct($id){
-        Product::where('id', $id)->delete();
-    }
 
     public function uploadImage($file = null){
         $file->move(public_path().'/upload/', $file->getClientOriginalName());
