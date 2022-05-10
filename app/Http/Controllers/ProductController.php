@@ -23,7 +23,6 @@ class ProductController extends Controller
         // dd($request->input('id'));
         $store = Store::where('id', $request->input('id'))->get()->first();
         $product = Product::where('store_id', $request->input('id'))->get()->all();
-        // dd($product);
         return view(
             'products.product',
             [
@@ -40,7 +39,7 @@ class ProductController extends Controller
             'product_name' => $request->product_name,
             'category' => $request->category,
             'unit' => $request->unit,
-            'image' => $image,
+            'image' =>  $image,
             // 'image' => ($request->image == null) ? "" : $request->image,
             'store_id' => $request->store_id
         ]);
@@ -48,24 +47,26 @@ class ProductController extends Controller
 
     public function UpdateProduct(Request $request)
     {
-        
-        $request->validate([
-            'product_name' => 'required',
-            'category' => 'required',
-            'unit' => 'required',
-        ]);
+        // $request->validate([
+        //     'product_name' => 'required',
+        //     'category' => 'required',
+        //     'unit' => 'required',
+        // ]);
 
+        $image = $this->uploadImage($request->image[0]);
         $product = Product::where('id', $request->id)->update([
             'product_name' => $request->product_name,
             'category' => $request->category,
             'unit' => $request->unit,
-            'image' => ($request->image == null) ? "" : $request->image,
+            'image' => $image,
+            'store_id' => $request->store_id
         ]);
     }
 
     public function DestroyProduct($id){
         Product::where('id', $id)->delete();
     }
+
 
     public function uploadImage($file = null){
         $file->move(public_path().'/upload/', $file->getClientOriginalName());

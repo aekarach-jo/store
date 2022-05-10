@@ -25,21 +25,21 @@
                 <tr>
                     <th>ชื่อสินค้า</th>
                     <th>ประเภท</th>
-                    <th width="150">รูปภาพ</th>
-                    <th width="150">จำนวน</th>
-                    <th width="100">จัดการ</th>
+                    <th class="text-center" width="150">รูปภาพ</th>
+                    <th class="text-center" width="150">จำนวน</th>
+                    <th class="text-center" width="100">จัดการ</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($Product as $product)
                 <tr>
-                    <td>{{ $product->product_name }}</td>
-                    <td>{{ $product->category }}</td>
-                    <td>
+                    <td class="vertical-table">{{ $product->product_name }}</td>
+                    <td class="vertical-table">{{ $product->category }}</td>
+                    <td class="vertical-table">
                         <img class="rounded-circle image-style img-thumbnail"  src="{{ $product->image }}" >
                     </td>
-                    <td>{{ $product->unit }}</td>
-                    <td>
+                    <td class="vertical-table text-center">{{ $product->unit }}</td>
+                    <td class="vertical-table">
                         <div class="row">
                             <div class="col-6">
                                 <div type="button" class="btn_edit" data-bs-toggle="modal" id="{{ $product->id }}"
@@ -94,7 +94,7 @@
                             </div>
                             <div class="row">
                                 <label for="image">รูป</label>
-                                <input onchange="test()" type="file" class="form-control" id="image">
+                                <input type="file" class="form-control" id="image">
                             </div>
                         </div>
                     </form>
@@ -108,7 +108,7 @@
     </div>
     <!-- edit Product -->
 
-    <div class="modal fade" id="modal-edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade modal-edit" id="modal-edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="modalAddStore" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -117,7 +117,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
                         <div class="col p-3">
                             <div class="row" hidden>
                                 <label for="id">id</label>
@@ -140,13 +139,18 @@
                                 <label for="unit">จำนวน</label>
                                 <input type="number" class="form-control" id="unit">
                             </div>
+                            <div class="row" hidden>
+                                <label for="unit">ร้านค้า</label>
+                                <input type="number" class="form-control" id="store_id">
+                            </div>
                             <div class="row">
                                 <label for="image">รูป</label>
-                                <input type="file" class="form-control" id="image">
-                                {{-- <img src="{{ $product->image }}" alt=""> --}}
+                                <div class="container changImg">
+                                    <input onchange="changeImage(this)" type="file" class="form-control image" id="image" src="">
+                                    <img class="preview" src="">
+                                </div>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิก</button>

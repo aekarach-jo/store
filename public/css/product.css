@@ -20,3 +20,8 @@
     width: 120px;
     height: 80px;
 }
+
+.vertical-table{
+    vertical-align: middle;
+    
+}
