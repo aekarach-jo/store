@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/adminLogout', [AdminController::class , 'logout']);
+
+    Route::post('/loginAdmin', [AdminController::class , 'onAdminLogin']);
+    
+});
+
+Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', [UserController::class, 'logout']);
 
     // store
@@ -46,6 +53,16 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/product', function () {
     //     return view('/products/product');
     // });
+});
+
+Route::post('createAdmin', [AdminController::class , 'onCreateAdmin']);
+Route::post('onAdminLogin', [AdminController::class , 'onAdminLogin'] ); 
+
+Route::get('register-admin' , function(){
+    return view('/admin/register');
+});
+Route::get('/login-admin', function(){
+    return view('/admin/login');
 });
 
 Route::get('/', function () {

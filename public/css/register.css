@@ -14,10 +14,14 @@
     margin: 10px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 23px;
+    font-size: 18px;
 }
 
 .label-style{
     position: relative;
     margin-left: 4rem;
+}
+
+.check{
+    margin: 10px;
 }

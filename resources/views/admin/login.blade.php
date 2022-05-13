@@ -1,12 +1,13 @@
 @extends('layouts.layout_login')
-@section('title', "Login")
+@section('title', "Admin")
 @section('style')
-<link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/login.css">
 @endsection
 
 @section('content')
+@section('content')
 <div class="form form-style d-block mx-auto shadow-lg shadow-indigo-500/50 space-y-2">
-    <h1 class="text-center p-3">Login</h1>
+    <h1 class="text-center p-3">Admin</h1>
     <div class="col">
         <div class="row">
             <label for="name" class=" label-style ">name</label>
@@ -22,6 +23,7 @@
 </div>
 @endsection
 
+@endsection
 @section('script')
-<script src="/js/login.js"></script>
+    <script src="/js/admin/login_admin.js"></script>
 @endsection

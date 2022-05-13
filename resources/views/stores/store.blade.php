@@ -7,6 +7,14 @@
 
 @section('content')
 
+
+    {{-- <p>{{ $userData->name}}</p> --}}
+   
+    {{-- @foreach($Permission as $userPermission)
+    <p>{{$userPermission}}</p>
+    @endforeach --}}
+       {{--                               --}}
+
     <div class="container container-min-w-h hidden-scroll">
         <div class="row">
             <div class="col">
@@ -17,7 +25,7 @@
                     data-bs-target="#modal-add-store">เพิ่มร้านค้า</button>
             </div>
         </div>
-        
+
         <table class="table table-scroller table-hover table-responsive">
             <thead class="table-dark ">
                 <tr>
@@ -46,8 +54,8 @@
                         <td>
                             <div class="row">
                                 <div class="col-6">
-                                    <div type="button" class="btn_edit" id="{{ $content->id }}" data-bs-toggle="modal"
-                                        data-bs-target="#modal-edit">
+                                    <div type="button" class="btn_edit" id="{{ $content->id }}"
+                                        data-bs-toggle="modal" data-bs-target="#modal-edit">
                                         <img onclick="onEditStore(this)" style="color: aqua"
                                             src="https://img.icons8.com/material-sharp/40/edit--v1.png">
                                     </div>
