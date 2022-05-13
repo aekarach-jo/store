@@ -186,17 +186,18 @@ async function onDeleteProduct(d) {
     })
 }
 
-function changeImage(e) {
+function onChangeImage(e) {
     let file = e.files;
-    if (file.length > 0) {
-        // document.querySelector('#modal-edit .modal-body .changImg').innerHTML = `
-        // <input onchange="changeImage(this)" type="file" class="form-control" id="image" src="">
+    if(file.length > 0){
+        // document.querySelector('#modal-edit .modal-body #image').innerHTML = `
+        // <input onchange="onChangeImage(this)" type="file" class="form-control" id="image">
         // <img class="preview" src="">
-        // <button class="btn-change" type="button">เปลี่ยนรูป</button>`;
-        let preview = document.querySelector('#modal-edit .modal-body .preview');
+        // `;
         let input = document.querySelector('#modal-edit .modal-body #image')
-        input.files = e.files;
-        preview.src = URL.createObjectURL(file[0]);
+        input.files = e.files
+
+        let preview = document.querySelector('#modal-edit .modal-body .preview')
+        preview.src = URL.createObjectURL(file[0])
         console.log(preview.src);
     }
 }

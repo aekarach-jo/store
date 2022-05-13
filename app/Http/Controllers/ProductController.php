@@ -44,6 +44,9 @@ class ProductController extends Controller
             'store_id' => $request->store_id
         ]);
     }
+    public function DestroyProduct($id){
+        Product::where('id', $id)->delete();
+    }
 
     public function UpdateProduct(Request $request)
     {

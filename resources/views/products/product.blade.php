@@ -145,10 +145,8 @@
                             </div>
                             <div class="row">
                                 <label for="image">รูป</label>
-                                <div class="container changImg">
-                                    <input onchange="changeImage(this)" type="file" class="form-control image" id="image" src="">
-                                    <img class="preview" src="">
-                                </div>
+                                <input onchange="onChangeImage(this)" type="file" class="form-control" id="image">
+                                <img class="preview" src="">
                             </div>
                         </div>
                 </div>
